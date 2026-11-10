@@ -68,7 +68,7 @@ case "$DOCKER_ROOT" in
 esac
 
 log "Stopping Docker services and socket activation..."
-for unit in docker.service docker.socket docker на-rootless.service containerd.service buildkit.service; do
+for unit in docker.service docker.socket docker-rootless.service containerd.service buildkit.service; do
   systemctl disable --now "$unit" 2>/dev/null || true
 done
 
