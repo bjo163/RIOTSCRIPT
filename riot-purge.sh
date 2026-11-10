@@ -78,7 +78,7 @@ for pkg in "${manual_packages[@]}"; do
   [[ "$pkg" =~ ^[a-zA-Z0-9][a-zA-Z0-9+.-]*(:[a-zA-Z0-9_-]+)?$ ]] || continue
   # Explicit base-system protections.
   case "$pkg" in
-    apt|apt-*|base-files|base-passwd|bash|bsdutils|coreutils|dash|debconf|debian-archive-keyring|dpkg|e2fsprogs|findutils|grep|grub*|init|init-system-helpers|initramfs-tools*|iproute2|iputils*|kmod|libc6|libpam*|login|lsb-base|mawk|mount|ncurses-base|ncurses-bin|openssh*|passwd|procps|sed|systemd*|sysvinit*|tar| udev|util-linux| usrmerge|zlib1g|linux-*|openssh-server|ifupdown|netbase|net-tools|sudo|ca-certificates|curl|wget)
+    apt|apt-*|base-files|base-passwd|bash|bsdutils|coreutils|dash|debconf|debian-archive-keyring|dpkg|e2fsprogs|findutils|grep|grub*|init|init-system-helpers|initramfs-tools*|iproute2|iputils*|kmod|libc6|libpam*|login|lsb-base|mawk|mount|ncurses-base|ncurses-bin|openssh*|passwd|procps|sed|systemd*|sysvinit*|tar|udev|util-linux|usrmerge|zlib1g|linux-*|openssh-server|ifupdown|netbase|net-tools|sudo|ca-certificates|curl|wget)
       continue;;
   esac
   # Only show packages that are installed and explicitly marked manual.
