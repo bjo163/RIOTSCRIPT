@@ -31,9 +31,9 @@ Type `WIPE-DOCKER` when prompted. For unattended use, `sudo bash riot-clean.sh -
 File: `riot-purge.sh`
 
 Reviews and optionally removes:
-- Enabled/running non-core systemd service candidates (each requires confirmation)
-- APT packages marked manually installed (each package requires confirmation)
-- Immediate child directories under `/opt`, `/srv`, `/var/www`, `/usr/local/src`, and `/usr/local/share` (each requires confirmation)
+- Custom systemd service files located only in `/etc/systemd/system` or `/usr/local/lib/systemd/system` (each requires confirmation)
+- A narrow allowlist of common application/tool packages such as Node.js, npm, Masscan and selected Python/build tools (each requires confirmation)
+- Immediate child directories under `/opt`, `/srv`, `/var/www`, and `/usr/local/src` (each requires confirmation)
 
 Run a preview first:
 ```bash
@@ -69,9 +69,8 @@ RIOT-CLEAN also stops if it detects active Kubernetes-family services that could
 
 ## Important limitations
 
-- APT's manually-installed package list is not a reliable label for "application only". Review each package; do not approve packages you do not recognize.
-- Service names are heuristic candidates, not proof that a service is disposable.
-- Application data may live outside the listed directories. The scripts do not guess or recursively wipe arbitrary filesystem paths.
+- APT manual-install status is not used as a purge list because Debian marks many essential libraries and base utilities as manually installed.
+- Only administrator-managed custom unit files are considered; package-owned system units are excluded.
 - Cron jobs, user startup files, PM2/systemd user units and other custom launchers may need manual inspection.
 - Scripts have been committed to the repository; always inspect the source before running as root. Test on a disposable VPS before production use.
 
